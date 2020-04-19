@@ -1,0 +1,32 @@
+﻿@model Forestry_test.ViewModels.AppointmentViewModel.AppointmentViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AppointmentViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Appointments.First().PointID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Appointments.First().PointID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Appointments.First().PointName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Appointments.First().PointName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

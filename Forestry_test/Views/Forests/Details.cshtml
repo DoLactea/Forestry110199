@@ -1,0 +1,51 @@
+﻿@model Forestry_test.ViewModels.ForestViewModel.ForestsViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Forests" asp-action="Index">Назад</a>
+</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ForestViewModel.ForestID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Forests.First().ForestID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ForestViewModel.FIO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Forests.First().FIO.FIO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ForestViewModel.SortD)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Forests.First().SortD.SortD)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ForestViewModel.PointName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Forests.First().PointName.PointName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ForestViewModel.Quarter)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Forests.First().Quarter)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ForestViewModel.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Forests.First().Loc.Loc)
+        </dd>
+    </dl>
+</div>

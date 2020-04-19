@@ -1,0 +1,39 @@
+﻿@model Forestry_test.Models.Mazist
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Mazists" asp-action="Index">Назад</a>
+</h3>
+
+<h2>Водитель № @Model.CarID</h2>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model=>model.CarID,"Код")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CarID)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.FIO, "Имя")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.FIO)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.CarNumber, "Номер")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CarNumber)
+        </td>
+    </tr>
+</table>
+
+

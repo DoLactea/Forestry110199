@@ -1,0 +1,50 @@
+﻿@using Forestry_test.ViewModels.MazistViewModel
+@model MazistViewModel
+@addTagHelper "*, Forestry_test"
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+@Html.ActionLink("Создать", "Create")
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Имя: </label>
+        @Html.TextBox("firstName", Model.FilterViewModel.SelectedfIO, htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="фильтр" class="btn-default" />
+    </div>
+    <br /><br />
+</form>
+<table class="table">
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.CarIDSort)"
+               asp-route-type="@(Model.FilterViewModel.SelectedfIO)">@Html.DisplayNameFor(model => model.Mazist.CarID)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.FIOSort)"
+               asp-route-type="@(Model.FilterViewModel.SelectedfIO)">@Html.DisplayNameFor(model => model.Mazist.FIO)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.CarNumberSort)"
+               asp-route-type="@(Model.FilterViewModel.SelectedfIO)">@Html.DisplayNameFor(model => model.Mazist.CarNumber)</a>
+        </th>
+    </tr>
+    @foreach (var rate in Model.Mazists)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => rate.CarID)</td>
+            <td>@Html.DisplayFor(modelItem => rate.FIO)</td>
+            <td>@Html.DisplayFor(modelItem => rate.CarNumber)</td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = rate.CarID }, null) |
+                @Html.ActionLink("Подробнее", "Details", new { id = rate.CarID }, null) |
+                @Html.ActionLink("Удалить", "Delete", new { id = rate.CarID }, null)
+            </td>
+        </tr>
+
+    }
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-type="@(Model.FilterViewModel.SelectedfIO)"
+           page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>

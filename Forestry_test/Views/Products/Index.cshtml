@@ -1,0 +1,73 @@
+﻿@using Forestry_test.ViewModels.ProductViewModel
+@model ProductsViewModel
+@addTagHelper "*, Forestry_test"
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+@if (User.IsInRole("MainAdmin") || User.IsInRole("Master") || User.IsInRole("User"))
+{
+    @Html.ActionLink("Создать", "Create")
+}
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Длина: </label>
+        @Html.DropDownList("name", Model.FilterViewModel.SortsD as SelectList, htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+    <br /><br />
+</form>
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.ProdIDSort)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedSortD)">@Html.DisplayNameFor(model => model.ProductViewModel.ProdID)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.SortDSort)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedSortD)">@Html.DisplayNameFor(model => model.ProductViewModel.SortD)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.LghtSort)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedSortD)">@Html.DisplayNameFor(model => model.ProductViewModel.Lght)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.VolumeSort)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedSortD)">@Html.DisplayNameFor(model => model.ProductViewModel.Volume)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.QuartersSort)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedSortD)">@Html.DisplayNameFor(model => model.ProductViewModel.Quarters)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.LocSort)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedSortD)">@Html.DisplayNameFor(model => model.ProductViewModel.Location)</a>
+        </th>
+    </tr>
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ProdID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sorte.SortD)</td>
+            <td>@Html.DisplayFor(modelItem => item.Lght)</td>
+            <td>@Html.DisplayFor(modelItem => item.Volume)</td>
+            <td>@Html.DisplayFor(modelItem => item.Quarters)</td>
+            <td>@Html.DisplayFor(modelItem => item.Loc.Loc)</td>
+            @if (User.IsInRole("MainAdmin") || User.IsInRole("Master"))
+            {
+                <td>
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.ProdID }, null) |
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.ProdID }, null) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.ProdID }, null)
+                </td>
+            }
+        </tr>
+    }
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-rate="@(Model.FilterViewModel.SelectedSortD)"
+           page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>
+
+

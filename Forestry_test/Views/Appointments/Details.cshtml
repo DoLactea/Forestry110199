@@ -1,0 +1,31 @@
+﻿@model Forestry_test.Models.Appointment
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Appointments" asp-action="Index">Назад</a>
+</h3>
+
+<h2>Назначение № @Model.PointID</h2>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model=>model.PointID,"Код назначения")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PointID)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.PointName, "Место назначения")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PointName)
+        </td>
+    </tr>
+</table>
+
+

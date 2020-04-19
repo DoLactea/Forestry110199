@@ -1,0 +1,30 @@
+﻿@model Forestry_test.Models.Location
+@{ 
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Locations" asp-action="Index">Назад</a>
+</h3>
+
+<h2>Лесничество № @Model.LocID</h2>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model=>model.LocID, "Код Лесничества")
+        <td>
+            @Html.DisplayFor(model => model.LocID)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Loc, "Лесничество")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Loc)
+        </td>
+    </tr>
+</table>
+
+

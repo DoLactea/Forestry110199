@@ -1,0 +1,109 @@
+﻿@using Forestry_test.ViewModels.ForestViewModel
+@model ForestsViewModel
+@addTagHelper "*, Forestry_test"
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+@if (User.IsInRole("MainAdmin") || User.IsInRole("Master"))
+{
+    @Html.ActionLink("Создать", "Create")
+    int[] Forestid = new int[100];
+    var count = Model.Forests.Count();
+    int i = 0;
+
+    <div align="right">
+        <form asp-action="DeleteAll">
+            @while (i < count)
+            {
+                @foreach (var item in Model.Forests)
+                {
+                    Forestid[i] = item.ForestID;
+                    <input type="hidden" name="forestID" value="@Forestid[i]" />
+                    i++;
+                }
+            }
+            <input type="submit" value="Очистить таблицу" class="btn btn-default" onclick="return proverka();" />
+        </form>
+    </div>
+}
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Имя водителя: </label>
+        @Html.DropDownList("agent", Model.FilterViewModel.fIO as SelectList, htmlAttributes: new { @class = "form-control" })
+        <label class="control-label">Точка назначения: </label>
+        @Html.DropDownList("name", Model.FilterViewModel.pointName as SelectList, htmlAttributes: new { @class = "form-control" })
+        <label class="control-label">Наименование: </label>
+        @Html.DropDownList("sort", Model.FilterViewModel.sortD as SelectList, htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+    <br /><br />
+</form>
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.ForestIDSort)"
+               asp-route-surname="@(Model.FilterViewModel.SelectedfIO)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedpointName)">@Html.DisplayNameFor(model => model.ForestViewModel.ForestID)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.FIOSort)"
+               asp-route-surname="@(Model.FilterViewModel.SelectedfIO)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedpointName)">@Html.DisplayNameFor(model => model.ForestViewModel.FIO)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.SortDSort)"
+               asp-route-surname="@(Model.FilterViewModel.SelectedfIO)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedpointName)">@Html.DisplayNameFor(model => model.ForestViewModel.SortD)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.PointNameSort)"
+               asp-route-surname="@(Model.FilterViewModel.SelectedfIO)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedpointName)">@Html.DisplayNameFor(model => model.ForestViewModel.PointName)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.QuarterSort)"
+               asp-route-surname="@(Model.FilterViewModel.SelectedfIO)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedpointName)">@Html.DisplayNameFor(model => model.ForestViewModel.Quarter)</a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.LocSort)"
+               asp-route-surname="@(Model.FilterViewModel.SelectedfIO)"
+               asp-route-rate="@(Model.FilterViewModel.SelectedpointName)">@Html.DisplayNameFor(model => model.ForestViewModel.Location)</a>
+        </th>
+    </tr>
+    @foreach (var item in Model.Forests)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ForestID)</td>
+            <td>@Html.DisplayFor(modelItem => item.FIO.FIO)</td>
+            <td>@Html.DisplayFor(modelItem => item.SortD.SortD)</td>
+            <td>@Html.DisplayFor(modelItem => item.PointName.PointName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Quarter)</td>
+            <td>@Html.DisplayFor(modelItem => item.Loc.Loc)</td>
+            @if (User.IsInRole("MainAdmin") || User.IsInRole("Master"))
+            {
+                <td>
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.ForestID }, null) |
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.ForestID }, null) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.ForestID }, null)
+                </td>
+            }
+        </tr>
+    }
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-surname="@(Model.FilterViewModel.SelectedfIO)"
+           page-url-rate="@(Model.FilterViewModel.SelectedpointName), @(Model.FilterViewModel.SelectedsortD)"
+           page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>
+
+<script>
+    function proverka() {
+        if (confirm("Вы уверены?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>

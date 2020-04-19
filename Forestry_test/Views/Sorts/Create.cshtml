@@ -1,0 +1,19 @@
+﻿@model Forestry_test.Models.Sort
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Sorts" asp-action="Index">Назад</a>
+</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model=> model.SortD, "Наименование")
+    <br/>
+    @Html.EditorFor(model=>model.SortD)
+    <br/><br/>
+    <input type="submit" value="Добавть"/>
+}
+

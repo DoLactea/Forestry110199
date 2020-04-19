@@ -1,0 +1,20 @@
+﻿@model Forestry_test.Models.Appointment
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Appointments" asp-action="Index">Назад</a>
+</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.PointName, "Место назначения")
+    <br />
+    @Html.EditorFor(model => model.PointName)
+    @Html.ValidationMessageFor(model => model.PointName)
+    <br /><br />
+    <input type="submit" value="Добавть" />
+}
+

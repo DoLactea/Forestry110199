@@ -1,0 +1,56 @@
+﻿@model Forestry_test.ViewModels.ProductViewModel.ProductsViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Products" asp-action="Index">Назад</a>
+</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Products.First().ProdID" class="control-label">Код</label>
+                <input asp-for="Products.First().ProdID" class="form-control" readonly />
+                <span asp-validation-for="Products.First().ProdID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Products.First().Sorte.SortD" class="control-label"></label>
+                <select asp-for="Products.First().SortID" class="form-control" asp-items="Model.SortsList"></select>
+                <span asp-validation-for="Products.First().SortID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Products.First().Lght" class="control-label">Длина, м</label>
+                <input asp-for="Products.First().Lght" class="form-control" />
+                <span asp-validation-for="Products.First().Lght" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Products.First().Volume" class="control-label">Объем, м3</label>
+                <input asp-for="Products.First().Volume" class="form-control" />
+                <span asp-validation-for="Products.First().Volume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Products.First().Quarters" class="control-label">Квартал</label>
+                <input asp-for="Products.First().Quarters" class="form-control" />
+                <span asp-validation-for="Products.First().Quarters" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Products.First().Loc.Loc" class="control-label"></label>
+                <select asp-for="Products.First().LocID" class="form-control" asp-items="Model.LocList"></select>
+                <span asp-validation-for="Products.First().LocID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Изменить" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

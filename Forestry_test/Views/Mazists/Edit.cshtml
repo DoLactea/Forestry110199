@@ -1,0 +1,28 @@
+﻿@model Forestry_test.Models.Mazist
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Mazists" asp-action="Index">Назад</a>
+</h3>
+@using (Html.BeginForm("Edit", "Mazists", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(c => c.CarID)
+        <p>
+            @Html.LabelFor(c => c.FIO, "Имя")
+            <br />
+            @Html.EditorFor(c => c.FIO)
+        </p>
+        <p>
+            @Html.LabelFor(c => c.CarNumber, "Номер")
+            <br />
+            @Html.EditorFor(c => c.CarNumber)
+        </p>
+        <p>
+            <input type="submit" value="Изменить"/>
+        </p>
+    </fieldset>
+}
+

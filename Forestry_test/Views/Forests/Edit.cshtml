@@ -1,0 +1,56 @@
+﻿@model Forestry_test.ViewModels.ForestViewModel.ForestsViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Forests" asp-action="Index">Назад</a>
+</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Forests.First().ForestID" class="control-label">Код</label>
+                <input asp-for="Forests.First().ForestID" class="form-control" readonly />
+                <span asp-validation-for="Forests.First().ForestID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forests.First().FIO.FIO" class="control-label"></label>
+                <select asp-for="Forests.First().FIO.FIO" class="form-control" asp-items="Model.MazistsList"></select>
+                <span asp-validation-for="Forests.First().FIO.FIO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forests.First().SortD.SortD" class="control-label"></label>
+                <select asp-for="Forests.First().SortD.SortD" class="form-control" asp-items="Model.SortsList"></select>
+                <span asp-validation-for="Forests.First().SortD.SortD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forests.First().PointName.PointName" class="control-label"></label>
+                <select asp-for="Forests.First().PointName.PointName" class="form-control" asp-items="Model.AppointmentsList"></select>
+                <span asp-validation-for="Forests.First().PointName.PointName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forests.First().Quarter" class="control-label">Квартал</label>
+                <input asp-for="Forests.First().Quarter" class="form-control" />
+                <span asp-validation-for="Forests.First().Quarter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forests.First().Loc.Loc" class="control-label"></label>
+                <select asp-for="Forests.First().Loc.Loc" class="form-control" asp-items="Model.LocList"></select>
+                <span asp-validation-for="Forests.First().Loc.Loc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Изменить" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,23 @@
+﻿@model Forestry_test.Models.Sort
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Sorts" asp-action="Index">Назад</a>
+</h3>
+@using (Html.BeginForm("Edit", "Sorts", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(c => c.SortID)
+        <p>
+            @Html.LabelFor(c => c.SortD, "Наименование")
+            <br />
+            @Html.EditorFor(c => c.SortD)
+        </p>
+        <p>
+            <input type="submit" value="Изменить"/>
+        </p>
+    </fieldset>
+}
+

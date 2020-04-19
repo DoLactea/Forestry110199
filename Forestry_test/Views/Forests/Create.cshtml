@@ -1,0 +1,52 @@
+﻿@model Forestry_test.Models.Forest
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>
+    <a asp-area="" asp-controller="Forests" asp-action="Index">Назад</a>
+</h3>
+<div class="col-md-4">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FIO.FIO" class="control-label"></label>
+            <select asp-for="CarID" class="form-control" asp-items="ViewBag.CarID">
+                <option>Выберите имя Водителя</option>
+            </select>
+            <span asp-validation-for="CarID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SortD.SortD" class="control-label"></label>
+            <select asp-for="SortID" class="form-control" asp-items="ViewBag.SortID">
+                <option>Выберите наименование</option>
+            </select>
+            <span asp-validation-for="SortID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PointName.PointName" class="control-label"></label>
+            <select asp-for="PointID" class="form-control" asp-items="ViewBag.PointID">
+                <option>Выберите место назначения</option>
+            </select>
+            <span asp-validation-for="PointID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Quarter" class="control-label">Квартал</label>
+            <input asp-for="Quarter" class="form-control" />
+            <span asp-validation-for="Quarter" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Loc.Loc" class="control-label"></label>
+            <select asp-for="LocID" class="form-control" asp-items="ViewBag.LocID">
+                <option>Выберите лесничество</option>
+            </select>
+            <span asp-validation-for="LocID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Добавить" class="btn btn-default" />
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

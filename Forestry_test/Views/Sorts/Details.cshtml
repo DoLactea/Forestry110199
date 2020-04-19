@@ -1,0 +1,30 @@
+﻿@model Forestry_test.Models.Sort
+@{ 
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    <a asp-area="" asp-controller="Sorts" asp-action="Index">Назад</a>
+</h3>
+
+<h2>Наименование № @Model.SortID</h2>
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model=>model.SortID, "Код Наименования")
+        <td>
+            @Html.DisplayFor(model => model.SortID)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.SortD, "Наименование")
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SortD)
+        </td>
+    </tr>
+</table>
+
+
