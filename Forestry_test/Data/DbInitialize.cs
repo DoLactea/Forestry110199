@@ -74,13 +74,15 @@ namespace Forestry_test.Data
                 int Volumes = random.Next(1, sort_number - 1);
                 int Quarters = random.Next(1, sort_number - 1);
                 int Locations = random.Next(1, location_number - 1);
+                DateTime DateOfShipment = new DateTime(1);
                 db.Products.Add(new Product
                 {
                     SortID = SortsID,
                     Lght = Lghts,
                     Volume = Volumes,
                     Quarters = Quarters,
-                    LocID = Locations
+                    LocID = Locations,
+                    DateOfShipment = DateOfShipment
                 });
             }
             db.SaveChanges();
@@ -90,15 +92,17 @@ namespace Forestry_test.Data
                 int CarsID = random.Next(1, mazist_number - 1);
                 int SortID = random.Next(1, product_number - 1);
                 int PointsID = random.Next(1, appointment_number - 1);
-                int Quarters = random.Next(1, appointment_number - 1);
+                int Quarter = random.Next(1, appointment_number - 1);
                 int Locations = random.Next(1, location_number - 1);
+                DateTime DateOfAppointment = new DateTime(1);
                 db.Forests.Add(new Forest
                 {
                     CarID = CarsID,
                     SortID = SortID,
                     PointID = PointsID,
-                    Quarter = Quarters,
-                    LocID = Locations
+                    Quarter = Quarter,
+                    LocID = Locations,
+                    DateOfAppointment = DateOfAppointment
                 });
             }
             db.SaveChanges();

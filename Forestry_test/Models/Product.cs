@@ -21,6 +21,8 @@ namespace Forestry_test.Models
         public int Quarters { get; set; }
         public int? LocID { get; set; }
         public Location Loc { get; set; }
-       // public ICollection<Forest> Forests { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DateOfShipment { get; set; }
+        // public ICollection<Forest> Forests { get; set; }
     }
 }

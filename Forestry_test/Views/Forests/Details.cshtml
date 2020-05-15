@@ -5,7 +5,7 @@
 }
 
 <h3>
-    <a asp-area="" asp-controller="Forests" asp-action="Index">Назад</a>
+    <a asp-area="" asp-controller="Forests" asp-action="Index" class="btn btn-sm btn-warning">Назад</a>
 </h3>
 
 <div>
@@ -46,6 +46,12 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Forests.First().Loc.Loc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ForestViewModel.DateOfAppointment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Forests.First().DateOfAppointment)
         </dd>
     </dl>
 </div>

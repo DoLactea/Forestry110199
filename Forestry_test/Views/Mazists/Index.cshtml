@@ -5,15 +5,16 @@
     ViewData["Title"] = "Index";
 }
 <br />
+<a class="btn btn-sm btn-success" asp-action="Create">Создать</a>
 <br />
-@Html.ActionLink("Создать", "Create")
+<br />
 <form method="get">
     <div class="form-inline">
         <label class="control-label">Имя: </label>
         @Html.TextBox("firstName", Model.FilterViewModel.SelectedfIO, htmlAttributes: new { @class = "form-control" })
-        <input type="submit" value="фильтр" class="btn-default" />
+        <input type="submit" value="фильтр" class="btn btn-sm btn-warning" />
     </div>
-    <br /><br />
+    <br />
 </form>
 <table class="table">
     <tr>
@@ -37,9 +38,9 @@
             <td>@Html.DisplayFor(modelItem => rate.FIO)</td>
             <td>@Html.DisplayFor(modelItem => rate.CarNumber)</td>
             <td>
-                @Html.ActionLink("Изменить", "Edit", new { id = rate.CarID }, null) |
-                @Html.ActionLink("Подробнее", "Details", new { id = rate.CarID }, null) |
-                @Html.ActionLink("Удалить", "Delete", new { id = rate.CarID }, null)
+                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@rate.CarID">Изменить</a>
+                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@rate.CarID">Подробнее</a>
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@rate.CarID">Удалить</a>
             </td>
         </tr>
 

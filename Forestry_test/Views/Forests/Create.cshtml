@@ -3,9 +3,9 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>
-    <a asp-area="" asp-controller="Forests" asp-action="Index">Назад</a>
-</h3>
+    <h3>
+        <a asp-area="" asp-controller="Forests" asp-action="Index" class="btn btn-sm btn-warning">Назад</a>
+    </h3>
 <div class="col-md-4">
     <form asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -43,10 +43,16 @@
             <span asp-validation-for="LocID" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Добавить" class="btn btn-default" />
+            <label asp-for="DateOfAppointment" class="control-label">Дата назначения</label>
+            <input asp-for="DateOfAppointment" class="form-control" />
+            <span asp-validation-for="DateOfAppointment" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Добавить" class="btn btn-sm btn-success" />
         </div>
     </form>
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

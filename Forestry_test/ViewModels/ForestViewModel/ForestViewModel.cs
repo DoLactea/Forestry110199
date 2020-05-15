@@ -11,12 +11,15 @@ namespace Forestry_test.ViewModels.ForestViewModel
     {
         [Display(Name = "Код")]
         public int ForestID { get; set; }
+
         [Required(ErrorMessage = "Выберите водителя")]
         [Display(Name = "Имя водителя")]
         public string FIO { get; set; }
+
         [Required(ErrorMessage = "Выберите продукцию")]
         [Display(Name = "Продукция")]
         public string SortD { get; set; }
+
         [Required(ErrorMessage = "Выберите место назначения")]
         [Display(Name = "Назначение")]
         public string PointName { get; set; }
@@ -25,8 +28,14 @@ namespace Forestry_test.ViewModels.ForestViewModel
         [Range(1, 400)]
         [Display(Name = "Квартал")]
         public int Quarter { get; set; }
+
         [Required(ErrorMessage = "Выберите лесничество")]
         [Display(Name = "Лесничество")]
         public string Location { get; set; }
+        
+        [DataType(DataType.Date)]
+        [Range(typeof(DateTime), "1/1/2020", "1/1/2060")]
+        [Display(Name = "Дата назначения")]
+        public System.DateTime DateOfAppointment { get; set; }
     }
 }

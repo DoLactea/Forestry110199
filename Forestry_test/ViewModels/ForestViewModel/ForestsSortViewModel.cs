@@ -16,6 +16,7 @@ namespace Forestry_test.ViewModels.ForestViewModel
         public SortState QuarterSort { get; private set; }
         public SortState PointNameSort { get; private set; }
         public SortState LocSort { get; private set; }
+        public SortState DateOfAppointmentSort { get; private set; }
         public SortState Current { get; private set; }
 
         public ForestsSortViewModel(SortState sortOrder)
@@ -28,6 +29,7 @@ namespace Forestry_test.ViewModels.ForestViewModel
             QuarterSort = sortOrder == SortState.QuarterAsc ? SortState.QuarterDesc : SortState.QuarterAsc;
             PointNameSort = sortOrder == SortState.PointNameAsc ? SortState.PointNameDesc : SortState.PointNameAsc;
             LocSort = sortOrder == SortState.LocAsc ? SortState.LocDesc : SortState.LocAsc;
+            DateOfAppointmentSort = sortOrder == SortState.DateOfAppointmentAsc ? SortState.DateOfAppointmentDesc : SortState.DateOfAppointmentAsc;
             Current = sortOrder;
         }
     }

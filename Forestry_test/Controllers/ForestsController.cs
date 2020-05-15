@@ -29,7 +29,7 @@ namespace Forestry_test.Controllers
             SortD = ""
         };
         //[Authorize(Roles = "MainAdmin, user")]
-        public IActionResult Index(int? agent, int? name, int? sort, int page = 1, SortState sortOrder = SortState.FIOAsc)
+        public IActionResult Index(int? agent, int? name, int? sort, int page = 1, SortState sortOrder = SortState.DateOfAppointmentDesc)
         {
             int pageSize = 10;
             IQueryable<Forest> source = db.Forests.Include(d => d.FIO)
@@ -80,6 +80,12 @@ namespace Forestry_test.Controllers
                     break;
                 case SortState.LocDesc:
                     source = source.OrderByDescending(s => s.Loc.Loc);
+                    break;
+                case SortState.DateOfAppointmentAsc:
+                    source = source.OrderBy(s => s.DateOfAppointment);
+                    break;
+                case SortState.DateOfAppointmentDesc:
+                    source = source.OrderByDescending(s => s.DateOfAppointment);
                     break;
             }
             var count = source.Count();
@@ -163,7 +169,8 @@ namespace Forestry_test.Controllers
                 SortD = items.First().SortD.SortD,
                 PointName = items.First().PointName.PointName,
                 Quarter = items.First().Quarter,
-                Location = items.First().Loc.Loc
+                Location = items.First().Loc.Loc,
+                DateOfAppointment = items.First().DateOfAppointment
             };
             ForestsViewModel dutis = new ForestsViewModel
             {
@@ -209,7 +216,8 @@ namespace Forestry_test.Controllers
                 SortD = items.First().SortD.SortD,
                 PointName = items.First().PointName.PointName,
                 Quarter = items.First().Quarter,
-                Location = items.First().Loc.Loc
+                Location = items.First().Loc.Loc,
+                DateOfAppointment = items.First().DateOfAppointment
             };
             ForestsViewModel dutis = new ForestsViewModel
             {

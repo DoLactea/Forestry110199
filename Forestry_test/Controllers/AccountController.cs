@@ -37,7 +37,7 @@ namespace Forestry_test.Controllers
                 {
                     // установка куки
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Forests");
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace Forestry_test.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Forests");
                     }
                 }
                 else

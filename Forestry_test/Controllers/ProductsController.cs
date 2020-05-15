@@ -26,7 +26,7 @@ namespace Forestry_test.Controllers
             Location = ""
         };
         [Authorize(Roles = "MainAdmin, Master, User")]
-        public IActionResult Index(int? name, int page = 1, SortState sortOrder = SortState.ProdIDAsc)
+        public IActionResult Index(int? name, int page = 1, SortState sortOrder = SortState.DateOfShipmentDesc)
         {
             int pageSize = 10;
             IQueryable<Product> source = db.Products.Include(d => d.Sorte)
@@ -35,6 +35,9 @@ namespace Forestry_test.Controllers
                 source = source.Where(p => p.Sorte.SortID == name);
             switch (sortOrder)
             {
+                case SortState.ProdIDAsc:
+                    source = source.OrderBy(s => s.ProdID);
+                    break;
                 case SortState.ProdIDDesc:
                     source = source.OrderByDescending(s => s.ProdID);
                     break;
@@ -67,6 +70,12 @@ namespace Forestry_test.Controllers
                     break;
                 case SortState.LocDesc:
                     source = source.OrderByDescending(s => s.Loc.Loc);
+                    break;
+                case SortState.DateOfShipmentAsc:
+                    source = source.OrderBy(s => s.DateOfShipment);
+                    break;
+                case SortState.DateOfShipmentDesc:
+                    source = source.OrderByDescending(s => s.DateOfShipment);
                     break;
             }
             var count = source.Count();
@@ -138,7 +147,8 @@ namespace Forestry_test.Controllers
             {
                 ProdID = items.First().ProdID,
                 SortD = items.First().Sorte.SortD,
-                Location = items.First().Loc.Loc
+                Location = items.First().Loc.Loc,
+                DateOfShipment = items.First().DateOfShipment
             };
             ProductsViewModel werehousis = new ProductsViewModel
             {
@@ -177,7 +187,8 @@ namespace Forestry_test.Controllers
             {
                 ProdID = items.First().ProdID,
                 SortD = items.First().Sorte.SortD,
-                Location = items.First().Loc.Loc
+                Location = items.First().Loc.Loc,
+                DateOfShipment = items.First().DateOfShipment
             };
             ProductsViewModel werehousis = new ProductsViewModel
             {

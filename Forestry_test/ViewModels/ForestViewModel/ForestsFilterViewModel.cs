@@ -21,8 +21,10 @@ namespace Forestry_test.ViewModels.ForestsViewModel
         public SelectList fIO { get; private set; }
         public SelectList pointName { get; private set; }
         public SelectList sortD { get; private set; }
+        public SelectList dateOfAppointment { get; private set; }
         public int? SelectedfIO { get; private set; }
         public int? SelectedpointName { get; private set; }
         public int? SelectedsortD { get; private set; }
+        public DateTime? SelecteddateOfAppointment { get; private set; }
     }
 }

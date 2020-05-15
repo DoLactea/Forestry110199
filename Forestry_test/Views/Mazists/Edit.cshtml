@@ -3,9 +3,9 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>
-    <a asp-area="" asp-controller="Mazists" asp-action="Index">Назад</a>
-</h3>
+    <h3>
+        <a asp-area="" asp-controller="Mazists" asp-action="Index" class="btn btn-sm btn-warning">Назад</a>
+    </h3>
 @using (Html.BeginForm("Edit", "Mazists", FormMethod.Post))
 {
     <fieldset>
@@ -21,7 +21,7 @@
             @Html.EditorFor(c => c.CarNumber)
         </p>
         <p>
-            <input type="submit" value="Изменить"/>
+            <input type="submit" value="Изменить" class="btn btn-sm btn-success"/>
         </p>
     </fieldset>
 }

@@ -3,9 +3,9 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>
-    <a asp-area="" asp-controller="Appointments" asp-action="Index">Назад</a>
-</h3>
+    <h3>
+        <a asp-area="" asp-controller="Appointments" asp-action="Index" class="btn btn-sm btn-warning">Назад</a>
+    </h3>
 
 
 @using (Html.BeginForm())
@@ -15,6 +15,6 @@
     @Html.EditorFor(model => model.PointName)
     @Html.ValidationMessageFor(model => model.PointName)
     <br /><br />
-    <input type="submit" value="Добавть" />
+    <input type="submit" value="Добавть" class="btn btn-sm btn-success" />
 }
 

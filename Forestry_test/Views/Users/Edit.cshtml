@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Edit User";
 }
-
+    <br />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit" asp-controller="Users">
@@ -19,12 +19,12 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LocUser" class="control-label"></label>
+                <label asp-for="LocUser" class="control-label">Лесничество</label>
                 <input asp-for="LocUser" class="form-control" />
                 <span asp-validation-for="LocUser" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Сохранить" class="btn btn-success" />
             </div>
         </form>
     </div>

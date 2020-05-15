@@ -22,6 +22,10 @@ namespace Forestry_test.ViewModels.ProductViewModel
         public string Quarters { get; set; }
         [Display(Name = "Лесничество")]
         public string Location { get; set; }
+        [DataType(DataType.Date)]
+        [Range(typeof(DateTime), "1/1/2020", "1/1/2060")]
+        [Display(Name = "Дата погрузки")]
+        public System.DateTime DateOfShipment { get; set; }
 
     }
 }

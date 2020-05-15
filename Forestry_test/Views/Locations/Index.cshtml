@@ -4,17 +4,17 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<br />
+<a class="btn btn-sm btn-success" asp-action="Create">Создать</a>
 <br />
 <br />
-@Html.ActionLink("Создать", "Create")
 <form method="get">
     <div class="form-inline">
         <label class="control-label">Лесничество: </label>
         @Html.TextBox("Loc", Model.FilterViewModel.Selectedloc, htmlAttributes: new { @class = "form-control" })
-        <input type="submit" value="фильтр" class="btn-default" />
+        <input type="submit" value="фильтр" class="btn btn-sm btn-warning" />
     </div>
-    <br /><br />
+    <br />
 </form>
 <table class="table">
     <tr>
@@ -33,9 +33,9 @@
             <td>@Html.DisplayFor(modelItem => rate.LocID)</td>
             <td>@Html.DisplayFor(modelItem => rate.Loc)</td>
             <td>
-                @Html.ActionLink("Изменить", "Edit", new { id = rate.LocID }, null) |
-                @Html.ActionLink("Подробнее", "Details", new { id = rate.LocID }, null) |
-                @Html.ActionLink("Удалить", "Delete", new { id = rate.LocID }, null)
+                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@rate.LocID">Изменить</a>
+                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@rate.LocID">Подробнее</a>
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@rate.LocID">Удалить</a>
             </td>
         </tr>
 

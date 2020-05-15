@@ -9,6 +9,10 @@ namespace Forestry_test.Models
     {
         PointIDAsc,
         PointIDDesc,
+        DateOfAppointmentAsc,
+        DateOfAppointmentDesc,
+        DateOfShipmentAsc,
+        DateOfShipmentDesc,
         PointNameAsc,
         PointNameDesc,
         ForestIDAsc,

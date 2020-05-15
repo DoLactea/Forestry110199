@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/chart/Chart.bundle.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
     <script src="~/js/site.js"></script>
     <title>@ViewData["Title"] Ежедневник</title>
 
@@ -44,30 +45,34 @@
                             <li><a asp-area="" asp-controller="Mazists" asp-action="Index">Водители</a></li>
                             <li><a asp-area="" asp-controller="Appointments" asp-action="Index">Назначения</a></li>
                             <li><a asp-area="" asp-controller="Locations" asp-action="Index">Лесничества</a></li>
-                            <li><a asp-area="" asp-controller="Users" asp-action="Index">Пользователи</a></li>
-                            <li><a asp-area="" asp-controller="Roles" asp-action="Index">Роли</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Пользователи
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li> <a class="dropdown-item" asp-controller="Users" asp-action="Index">Список пользователей</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Roles" asp-action="Index">Роли пользователей</a></li>
+                                </ul>
+                            </li>
                         }
                     }
                 </ul>
-                <div align="right">
-                    <ul class="nav navbar-nav">
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li>
-                                <a asp-area="">
-                                    <form method="post" asp-controller="Account" asp-action="LogOff">
-                                        <input type="submit" value="Выйти" />
-                                    </form>
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li>
-                                <a asp-area="" asp-controller="Account" asp-action="Login" class="navbar-brand">Войти</a>
-                            </li>
-                        }
-                    </ul>
+                <div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <br />
+                        <form method="post" asp-area="" asp-controller="Account" asp-action="LogOff" id="logoutForm" class="navbar-right">
+                            <button type="submit" id="logOff" class="glyphicon glyphicon-log-out">Выйти</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a asp-area="" asp-controller="Account" asp-action="Register"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
+                        </ul>
+                    }
                 </div>
             </div>
         </div>
@@ -79,7 +84,7 @@
         @RenderBody()
         <hr />
         <footer>
-            @*<p>&copy; 2018 - Forestry_test</p>*@
+            @*<p>&copy; 2020 - Forestry_test</p>*@
         </footer>
     </div>
 
