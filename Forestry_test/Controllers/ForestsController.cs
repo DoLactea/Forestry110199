@@ -29,8 +29,9 @@ namespace Forestry_test.Controllers
             SortD = ""
         };
         //[Authorize(Roles = "MainAdmin, user")]
-        public IActionResult Index(int? agent, int? name, int? sort, int page = 1, SortState sortOrder = SortState.DateOfAppointmentDesc)
+        public IActionResult Index(int? agent, int? name, int? sort, int? forest, int page = 1, SortState sortOrder = SortState.DateOfAppointmentDesc)
         {
+            
             int pageSize = 10;
             IQueryable<Forest> source = db.Forests.Include(d => d.FIO)
                 .Include(d => d.PointName)
@@ -43,6 +44,8 @@ namespace Forestry_test.Controllers
                 source = source.Where(p => p.PointID == name);
             if (sort != null && sort != 0)
                 source = source.Where(p => p.SortID == sort);
+            if(forest != null && forest !=0)
+                source = source.Where(p => p.ForestID == forest);
             switch (sortOrder)
             {
                 case SortState.ForestIDAsc:
@@ -98,7 +101,7 @@ namespace Forestry_test.Controllers
                 ForestViewModel = _duti,
                 PageViewModel = pageViewModel,
                 SortViewModel = new ForestsSortViewModel(sortOrder),
-                FilterViewModel = new ForestsFilterViewModel(db.Mazists.ToList(), db.Appointments.ToList(), db.Sorts.ToList(), agent, name, sort)
+                FilterViewModel = new ForestsFilterViewModel(db.Mazists.ToList(), db.Appointments.ToList(), db.Sorts.ToList(), db.Forests.ToList(), agent, name, sort, forest)
             };
             return View(duti);
         }

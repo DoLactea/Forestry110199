@@ -66,7 +66,7 @@ namespace Forestry_test
             app.UseIdentity();
 
             // app.UseSession();
-            //app.UseDbInitializer();
+            app.UseDbInitializer();
 
 
             app.UseMvc(routes =>

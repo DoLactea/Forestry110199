@@ -21,18 +21,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Forests.First().FIO.FIO" class="control-label"></label>
-                <select asp-for="Forests.First().FIO.FIO" class="form-control" asp-items="Model.MazistsList"></select>
-                <span asp-validation-for="Forests.First().FIO.FIO" class="text-danger"></span>
+                <select asp-for="Forests.First().CarID" class="form-control" asp-items="Model.MazistsList"></select>
+                <span asp-validation-for="Forests.First().CarID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Forests.First().SortD.SortD" class="control-label"></label>
-                <select asp-for="Forests.First().SortD.SortD" class="form-control" asp-items="Model.SortsList"></select>
-                <span asp-validation-for="Forests.First().SortD.SortD" class="text-danger"></span>
+                <select asp-for="Forests.First().SortID" class="form-control" asp-items="Model.SortsList"></select>
+                <span asp-validation-for="Forests.First().SortID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Forests.First().PointName.PointName" class="control-label"></label>
-                <select asp-for="Forests.First().PointName.PointName" class="form-control" asp-items="Model.AppointmentsList"></select>
-                <span asp-validation-for="Forests.First().PointName.PointName" class="text-danger"></span>
+                <select asp-for="Forests.First().PointID" class="form-control" asp-items="Model.AppointmentsList"></select>
+                <span asp-validation-for="Forests.First().PointID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Forests.First().Quarter" class="control-label">Квартал</label>
@@ -41,8 +41,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Forests.First().Loc.Loc" class="control-label"></label>
-                <select asp-for="Forests.First().Loc.Loc" class="form-control" asp-items="Model.LocList"></select>
-                <span asp-validation-for="Forests.First().Loc.Loc" class="text-danger"></span>
+                <select asp-for="Forests.First().LocID" class="form-control" asp-items="Model.LocList"></select>
+                <span asp-validation-for="Forests.First().LocID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Forests.First().DateOfAppointment" class="control-label">Дата назначения</label>
